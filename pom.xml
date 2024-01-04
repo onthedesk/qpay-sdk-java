@@ -4,35 +4,39 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.jeequan</groupId>
-    <artifactId>jeepay-sdk-java</artifactId>
+    <groupId>com.benlaiyun</groupId>
+    <artifactId>qpay-sdk-java</artifactId>
     <version>1.6.0</version>
     <packaging>jar</packaging>
 
+    <parent>
+        <groupId>com.benlaiyun</groupId>
+        <artifactId>qpay</artifactId>
+        <version>Final</version>
+    </parent>
+
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>jeepay java sdk</description>
-    <url>https://github.com/jeequan/jeepay-sdk-java</url>
+    <description>qpay java sdk</description>
+    <url>https://github.com/onthedesk/qpay-sdk-java</url>
 
     <licenses>
         <license>
             <name>The MIT License</name>
-            <url>https://github.com/jeequan/jeepay-sdk-java/blob/main/LICENSE</url>
+            <url>https://github.com/onthedesk/qpay-sdk-java/blob/main/LICENSE</url>
         </license>
     </licenses>
 
     <scm>
-        <connection>https://github.com/jeequan/jeepay-sdk-java.git</connection>
-        <developerConnection>https://github.com/jeequan</developerConnection>
-        <url>https://github.com/jeequan/jeepay-sdk-java</url>
+        <connection>https://github.com/onthedesk/qpay-sdk-java.git</connection>
+        <developerConnection>https://github.com/onthedesk</developerConnection>
+        <url>https://github.com/onthedesk/qpay-sdk-java</url>
     </scm>
 
     <developers>
         <developer>
-            <name>jeequan</name>
-            <email>jmdhappy@126.com</email>
-            <url>https://github.com/jeequan/jeepay-sdk-java</url>
-            <organization>jeequan</organization>
-            <organizationUrl>https://www.jeequan.com</organizationUrl>
+            <name>QPay</name>
+            <email>xiuguozhao@gmail.com</email>
+            <url>https://github.com/onthedesk/qpay-sdk-java</url>
         </developer>
     </developers>
 
@@ -40,7 +44,6 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <logback-classic.version>1.2.7</logback-classic.version>
-
         <fastjson.version>1.2.78</fastjson.version>
     </properties>
 
