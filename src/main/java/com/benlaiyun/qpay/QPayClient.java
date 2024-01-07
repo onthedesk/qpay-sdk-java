@@ -2,7 +2,7 @@ package com.benlaiyun.qpay;
 
 import com.alibaba.fastjson.JSONObject;
 import com.benlaiyun.qpay.exception.QPayException;
-import com.benlaiyun.qpay.net.APIJeepayRequest;
+import com.benlaiyun.qpay.net.APIQPayRequest;
 import com.benlaiyun.qpay.net.APIResource;
 import com.benlaiyun.qpay.net.RequestOptions;
 import com.benlaiyun.qpay.request.QPayRequest;
@@ -153,6 +153,6 @@ public class QPayClient extends APIResource {
         JSONObject params = JSONObject.parseObject(jsonParam);
         request.getRequestOptions();
 
-        return APIJeepayRequest.buildURLWithSign(this.apiBase, params, request.getRequestOptions()).toString();
+        return APIQPayRequest.buildURLWithSign(this.apiBase, params, request.getRequestOptions()).toString();
     }
 }

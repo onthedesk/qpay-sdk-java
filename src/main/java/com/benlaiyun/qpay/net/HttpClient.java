@@ -41,7 +41,7 @@ public abstract class HttpClient {
      * @return
      * @throws QPayException
      */
-    public abstract APIJeepayResponse request(APIJeepayRequest request) throws QPayException;
+    public abstract APIQPayResponse request(APIQPayRequest request) throws QPayException;
 
     /**
      * 发送请求到Jeepay的API(支持重试)
@@ -49,9 +49,9 @@ public abstract class HttpClient {
      * @return
      * @throws QPayException
      */
-    public APIJeepayResponse requestWithRetries(APIJeepayRequest request) throws QPayException {
+    public APIQPayResponse requestWithRetries(APIQPayRequest request) throws QPayException {
         APIConnectionException requestException = null;
-        APIJeepayResponse response = null;
+        APIQPayResponse response = null;
         int retry = 0;
 
         while (true) {
@@ -111,7 +111,7 @@ public abstract class HttpClient {
     }
 
     private boolean shouldRetry(
-            int numRetries, QPayException exception, APIJeepayRequest request, APIJeepayResponse response) {
+            int numRetries, QPayException exception, APIQPayRequest request, APIQPayResponse response) {
         // Do not retry if we are out of retries.
         if (numRetries >= request.options.getMaxNetworkRetries()) {
             return false;

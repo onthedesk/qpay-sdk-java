@@ -62,12 +62,12 @@ public abstract class APIResource  {
 
         JSONObject params = JSONObject.parseObject(jsonParam);
         request.getRequestOptions();
-        APIJeepayRequest apiJeepayRequest = new APIJeepayRequest(method, url, params, request.getRequestOptions());
-        if (_log.isDebugEnabled()) _log.debug("Jeepay_SDK_REQ：url={}, data={}", apiJeepayRequest.getUrl(), JSONObject.toJSONString(apiJeepayRequest.getParams()));
-        APIJeepayResponse response = httpClient.requestWithRetries(apiJeepayRequest);
+        APIQPayRequest apiQPayRequest = new APIQPayRequest(method, url, params, request.getRequestOptions());
+        if (_log.isDebugEnabled()) _log.debug("QPay_SDK_REQ：url={}, data={}", apiQPayRequest.getUrl(), JSONObject.toJSONString(apiQPayRequest.getParams()));
+        APIQPayResponse response = httpClient.requestWithRetries(apiQPayRequest);
         int responseCode = response.getResponseCode();
         String responseBody = response.getResponseBody();
-        if (_log.isDebugEnabled()) _log.debug("Jeepay_SDK_RES：code={}, body={}", responseCode, responseBody);
+        if (_log.isDebugEnabled()) _log.debug("QPay_SDK_RES：code={}, body={}", responseCode, responseBody);
         if (responseCode != 200) {
             handleAPIError(response);
         }
@@ -88,7 +88,7 @@ public abstract class APIResource  {
      * @param response
      * @throws QPayException
      */
-    private static void handleAPIError(APIJeepayResponse response)
+    private static void handleAPIError(APIQPayResponse response)
             throws QPayException {
 
         String rBody = response.getResponseBody();

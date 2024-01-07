@@ -19,7 +19,7 @@ import java.util.*;
  * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
-public class APIJeepayRequest {
+public class APIQPayRequest {
     /**
      * 请求方法 (GET, POST, DELETE or PUT)
      * */
@@ -58,7 +58,7 @@ public class APIJeepayRequest {
      * @param options
      * @throws QPayException
      */
-    public APIJeepayRequest(
+    public APIQPayRequest(
             APIResource.RequestMethod method,
             String url,
             Map<String, Object> params,

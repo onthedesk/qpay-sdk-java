@@ -25,7 +25,7 @@ public class HttpURLConnectionClient extends HttpClient {
     }
 
     @Override
-    public APIJeepayResponse request(APIJeepayRequest request) throws APIConnectionException {
+    public APIQPayResponse request(APIQPayRequest request) throws APIConnectionException {
         HttpURLConnection conn = null;
 
         try {
@@ -42,7 +42,7 @@ public class HttpURLConnectionClient extends HttpClient {
                 responseBody = StreamUtils.readToEnd(conn.getErrorStream(), APIResource.CHARSET);
             }
 
-            return new APIJeepayResponse(responseCode, responseBody, headers);
+            return new APIQPayResponse(responseCode, responseBody, headers);
         } catch (IOException e) {
             throw new APIConnectionException(
                     String.format(
@@ -56,7 +56,7 @@ public class HttpURLConnectionClient extends HttpClient {
         }
     }
 
-    static HttpHeaders getHeaders(APIJeepayRequest request) {
+    static HttpHeaders getHeaders(APIQPayRequest request) {
         Map<String, List<String>> userAgentHeadersMap = new HashMap<>();
 
         userAgentHeadersMap.put("User-Agent", Collections.singletonList(buildUserAgentString(request.getOptions().getVersion())));
@@ -66,7 +66,7 @@ public class HttpURLConnectionClient extends HttpClient {
         return request.getHeaders().withAdditionalHeaders(userAgentHeadersMap);
     }
 
-    private static HttpURLConnection createJeepayConnection(APIJeepayRequest request)
+    private static HttpURLConnection createJeepayConnection(APIQPayRequest request)
             throws IOException {
         HttpURLConnection conn = (HttpURLConnection) request.url.openConnection();
 

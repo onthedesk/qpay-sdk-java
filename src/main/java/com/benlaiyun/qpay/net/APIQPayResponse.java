@@ -6,7 +6,7 @@ package com.benlaiyun.qpay.net;
  * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
-public class APIJeepayResponse {
+public class APIQPayResponse {
 
     private int responseCode;
     private String responseBody;
@@ -14,13 +14,13 @@ public class APIJeepayResponse {
 
     private int numRetries;
 
-    public APIJeepayResponse(int responseCode, String responseBody) {
+    public APIQPayResponse(int responseCode, String responseBody) {
         this.responseCode = responseCode;
         this.responseBody = responseBody;
         this.responseHeaders = null;
     }
 
-    public APIJeepayResponse(int responseCode, String responseBody, HttpHeaders responseHeaders) {
+    public APIQPayResponse(int responseCode, String responseBody, HttpHeaders responseHeaders) {
         this.responseCode = responseCode;
         this.responseBody = responseBody;
         this.responseHeaders = responseHeaders;
