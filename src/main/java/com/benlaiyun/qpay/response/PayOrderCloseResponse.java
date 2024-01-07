@@ -14,7 +14,7 @@ public class PayOrderCloseResponse extends QPayResponse {
     private static final long serialVersionUID = 7654172640802954221L;
 
     public PayOrderCloseResModel get() {
-        if(getData() == null) return new PayOrderCloseResModel();
+        if (getData() == null) return new PayOrderCloseResModel();
         return getData().toJavaObject(PayOrderCloseResModel.class);
     }
 

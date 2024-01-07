@@ -15,7 +15,7 @@ import java.util.Map;
  * QPay sdk客户端
  *
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public class QPayClient extends APIResource {
@@ -120,6 +120,16 @@ public class QPayClient extends APIResource {
                 .setAppId(this.appId)
                 .setApiKey(this.apiKey)
                 .build();
+            request.setRequestOptions(options);
+        }
+
+        return execute(request, RequestMethod.POST, this.apiBase);
+    }
+
+    public <T extends QPayResponse> T executeByRSA2(QPayRequest<T> request) throws QPayException {
+
+        if (request.getRequestOptions() == null) {
+            RequestOptions options = RequestOptions.builder().setVersion(request.getApiVersion()).setUri(request.getApiUri()).setAppId(this.appId).setApiKey(this.apiKey).setSignType("RSA2").build();
             request.setRequestOptions(options);
         }
 

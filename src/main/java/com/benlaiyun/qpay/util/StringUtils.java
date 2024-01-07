@@ -8,7 +8,7 @@ import static java.util.Objects.requireNonNull;
 /**
  * 字符串工具类
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public class StringUtils {
@@ -38,12 +38,12 @@ public class StringUtils {
     }
 
     public static String genUrl(String url, String uri) {
-        if(!url.endsWith("/")) url += "/";
+        if (!url.endsWith("/")) url += "/";
         return url += uri;
     }
 
     public static Boolean isEmpty(String str) {
-        if(str == null) return true;
+        if (str == null) return true;
         return "".equals(str.trim());
     }
 

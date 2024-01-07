@@ -112,11 +112,11 @@
         TransferOrderCreateResponse response = QPayClient.execute(request);
         _log.info("验签结果：{}", response.checkSign(QPay.apiKey));
         // 判断转账发起是否成功（并不代表转账成功）
-        if(response.isSuccess(QPay.apiKey)) {
+        if (response.isSuccess(QPay.apiKey)) {
             String transferId = response.get().getTransferId();
             _log.info("transferId：{}", transferId);
             _log.info("mchOrderNo：{}", response.get().getMchOrderNo());
-        }else {
+        } else {
             _log.info("下单失败：mchOrderNo={}, msg={}", model.getMchOrderNo(), response.getMsg());
             _log.info("通道错误码：{}", response.get().getErrCode());
             _log.info("通道错误信息：{}", response.get().getErrMsg());

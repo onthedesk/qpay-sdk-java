@@ -5,7 +5,7 @@ import com.benlaiyun.qpay.ApiField;
 /**
  * 支付查单请求实体类
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public class PayOrderQueryReqModel extends QPayObject {

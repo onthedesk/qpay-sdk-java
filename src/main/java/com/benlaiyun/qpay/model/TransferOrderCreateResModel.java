@@ -4,7 +4,7 @@ package com.benlaiyun.qpay.model;
  * 转账下单响应实体类
  *
  * @author terrfly
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021/8/13 16:08
  */
 public class TransferOrderCreateResModel extends QPayObject {

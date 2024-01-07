@@ -15,20 +15,20 @@ class DivisionReceiverBindTest {
 
     @BeforeAll
     public static void initApiKey() {
-        QPay.setApiBase(JeepayTestData.getApiBase());
-        QPay.apiKey = JeepayTestData.getApiKey();
-        QPay.mchNo = JeepayTestData.getMchNo();
-        QPay.appId = JeepayTestData.getAppId();
+        QPay.setApiBase(QPayTestData.getApiBase());
+        QPay.apiKey = QPayTestData.getApiKey();
+        QPay.mchNo = QPayTestData.getMchNo();
+        QPay.appId = QPayTestData.getAppId();
     }
 
     @Test
     public void testDivisionReceiverBind() {
         // 分账接口文档：https://docs.jeequan.com/docs/jeepay/division_api
-        QPayClient QPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey, QPay.getApiBase());
+        QPayClient qPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey, QPay.getApiBase());
         DivisionReceiverBindRequest request = new DivisionReceiverBindRequest();
         DivisionReceiverBindReqModel model = new DivisionReceiverBindReqModel();
         model.setMchNo(QPay.mchNo);                       // 商户号
-        model.setAppId(QPayClient.getAppId());            // 应用ID
+        model.setAppId(qPayClient.getAppId());            // 应用ID
         model.setIfCode("shengpay");
         model.setReceiverAlias("计全");
         model.setReceiverGroupId(100003L);
@@ -41,12 +41,12 @@ class DivisionReceiverBindTest {
         request.setBizModel(model);
 
         try {
-            DivisionReceiverBindResponse response = QPayClient.execute(request);
+            DivisionReceiverBindResponse response = qPayClient.execute(request);
             _log.info("验签结果：{}", response.checkSign(QPay.apiKey));
             // 判断转账发起是否成功（并不代表转账成功）
-            if(response.isSuccess(QPay.apiKey)) {
+            if (response.isSuccess(QPay.apiKey)) {
                 _log.info("accNo：{}， 绑定成功", response.get().getAccNo());
-            }else {
+            } else {
                 _log.info("绑定失败：accNo：{}", model.getAccNo());
                 _log.info("通道错误码：{}", response.get().getErrCode());
                 _log.info("通道错误信息：{}", response.get().getErrMsg());

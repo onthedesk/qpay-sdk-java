@@ -19,7 +19,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * API资源抽象类
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public abstract class APIResource  {
@@ -63,11 +63,11 @@ public abstract class APIResource  {
         JSONObject params = JSONObject.parseObject(jsonParam);
         request.getRequestOptions();
         APIJeepayRequest apiJeepayRequest = new APIJeepayRequest(method, url, params, request.getRequestOptions());
-        if(_log.isDebugEnabled()) _log.debug("Jeepay_SDK_REQ：url={}, data={}", apiJeepayRequest.getUrl(), JSONObject.toJSONString(apiJeepayRequest.getParams()));
+        if (_log.isDebugEnabled()) _log.debug("Jeepay_SDK_REQ：url={}, data={}", apiJeepayRequest.getUrl(), JSONObject.toJSONString(apiJeepayRequest.getParams()));
         APIJeepayResponse response = httpClient.requestWithRetries(apiJeepayRequest);
         int responseCode = response.getResponseCode();
         String responseBody = response.getResponseBody();
-        if(_log.isDebugEnabled()) _log.debug("Jeepay_SDK_RES：code={}, body={}", responseCode, responseBody);
+        if (_log.isDebugEnabled()) _log.debug("Jeepay_SDK_RES：code={}, body={}", responseCode, responseBody);
         if (responseCode != 200) {
             handleAPIError(response);
         }
@@ -101,7 +101,7 @@ public abstract class APIResource  {
             raiseMalformedJsonError(rBody, rCode);
         }
 
-        if(rCode == 404) {
+        if (rCode == 404) {
             throw new InvalidRequestException(jsonObject.getString("status") + ", "
                     + jsonObject.getString("error") + ", "
                     + jsonObject.getString("path")

@@ -7,7 +7,7 @@ import com.benlaiyun.qpay.ApiField;
 * 分账账号的绑定
 *
 * @author terrfly
-* @site https://www.jeepay.vip
+* @site https://www.benlaiyun.com
 * @date 2021/8/25 10:36
 */
 public class DivisionReceiverBindReqModel extends QPayObject {

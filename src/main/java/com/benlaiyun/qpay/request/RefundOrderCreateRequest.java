@@ -8,7 +8,7 @@ import com.benlaiyun.qpay.response.RefundOrderCreateResponse;
 /**
  * Jeepay退款请求实现
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-18 09:00
  */
 public class RefundOrderCreateRequest implements QPayRequest<RefundOrderCreateResponse> {

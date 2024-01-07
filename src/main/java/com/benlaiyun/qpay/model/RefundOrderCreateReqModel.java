@@ -5,7 +5,7 @@ import com.benlaiyun.qpay.ApiField;
 /**
  * 退款下单请求实体类
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-18 09:00
  */
 public class RefundOrderCreateReqModel extends QPayObject {

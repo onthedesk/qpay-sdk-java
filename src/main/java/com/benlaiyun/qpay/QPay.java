@@ -3,7 +3,7 @@ package com.benlaiyun.qpay;
 /**
  * Jeepay数据对象
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public abstract class QPay {

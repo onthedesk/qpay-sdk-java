@@ -9,7 +9,7 @@ import com.benlaiyun.qpay.response.TransferOrderQueryResponse;
 * Jeepay转账查询请求实现
 *
 * @author terrfly
-* @site https://www.jeepay.vip
+* @site https://www.benlaiyun.com
 * @date 2021/8/16 16:26
 */
 public class TransferOrderQueryRequest implements QPayRequest<TransferOrderQueryResponse> {

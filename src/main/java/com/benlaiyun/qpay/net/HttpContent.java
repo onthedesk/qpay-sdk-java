@@ -9,7 +9,7 @@ import static java.util.Objects.requireNonNull;
 /**
  * Http请求内容
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public class HttpContent {

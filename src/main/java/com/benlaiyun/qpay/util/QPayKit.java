@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Jeepay签名工具类
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public class QPayKit {
@@ -27,10 +27,10 @@ public class QPayKit {
      * @param map
      * @return  urlParam.append(key).append("=").append( paraMap.get(key) == null ? "" : paraMap.get(key) );
      */
-    public static String getStrSort(Map<String,Object> map){
+    public static String getStrSort(Map<String,Object> map) {
         ArrayList<String> list = new ArrayList<String>();
-        for(Map.Entry<String,Object> entry:map.entrySet()){
-            if(null != entry.getValue() && !"".equals(entry.getValue())){
+        for(Map.Entry<String,Object> entry:map.entrySet()) {
+            if (null != entry.getValue() && !"".equals(entry.getValue())) {
                 list.add(entry.getKey() + "=" + entry.getValue() + "&");
             }
         }
@@ -51,22 +51,22 @@ public class QPayKit {
      * @param key 商户秘钥
      * @return
      */
-    public static String getSign(Map<String,Object> map, String key){
+    public static String getSign(Map<String,Object> map, String key) {
         String result = getStrSort(map);
         result += "key=" + key;
-        if(_log.isDebugEnabled()) _log.debug("signStr:{}", result);
+        if (_log.isDebugEnabled()) _log.debug("signStr:{}", result);
         result = md5(result, encodingCharset).toUpperCase();
-        if(_log.isDebugEnabled()) _log.debug("signValue:{}", result);
+        if (_log.isDebugEnabled()) _log.debug("signValue:{}", result);
         return result;
     }
 
-    public static String getSign(String signStr, String key){
+    public static String getSign(String signStr, String key) {
         signStr += "key=" + key;
         String result = md5(signStr, encodingCharset).toUpperCase();
         return result;
     }
 
-    public static String getSign(String signStr){
+    public static String getSign(String signStr) {
         return md5(signStr, encodingCharset).toUpperCase();
     }
 

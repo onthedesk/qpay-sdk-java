@@ -1,6 +1,6 @@
 package com.benlaiyun.qpay;
 
-public class JeepayTestData {
+public class QPayTestData {
 
     public static String getApiBase() {
         return "https://jeepay.natapp4.cc";

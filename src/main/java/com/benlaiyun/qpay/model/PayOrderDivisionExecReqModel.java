@@ -6,7 +6,7 @@ import com.benlaiyun.qpay.ApiField;
 * 发起分账
 *
 * @author terrfly
-* @site https://www.jeepay.vip
+* @site https://www.benlaiyun.com
 * @date 2021/8/27 10:16
 */
 public class PayOrderDivisionExecReqModel extends QPayObject {

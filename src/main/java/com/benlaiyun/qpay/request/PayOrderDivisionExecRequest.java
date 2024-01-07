@@ -9,7 +9,7 @@ import com.benlaiyun.qpay.response.PayOrderDivisionExecResponse;
 * 分账发起
 *
 * @author terrfly
-* @site https://www.jeepay.vip
+* @site https://www.benlaiyun.com
 * @date 2021/8/27 10:19
 */
 public class PayOrderDivisionExecRequest implements QPayRequest<PayOrderDivisionExecResponse> {

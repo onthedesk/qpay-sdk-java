@@ -6,7 +6,7 @@ import com.benlaiyun.qpay.ApiField;
 * 转账下单请求实体类
 *
 * @author terrfly
-* @site https://www.jeepay.vip
+* @site https://www.benlaiyun.com
 * @date 2021/8/13 16:08
 */
 public class TransferOrderCreateReqModel extends QPayObject {

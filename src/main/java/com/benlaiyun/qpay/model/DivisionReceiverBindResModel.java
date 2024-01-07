@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 * 分账账号的响应结果
 *
 * @author terrfly
-* @site https://www.jeepay.vip
+* @site https://www.benlaiyun.com
 * @date 2021/8/25 10:38
 */
 public class DivisionReceiverBindResModel extends QPayObject {

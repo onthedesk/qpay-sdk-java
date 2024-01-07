@@ -8,7 +8,7 @@ import com.benlaiyun.qpay.response.PayOrderCreateResponse;
 /**
  * Jeepay支付下单请求实现
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public class PayOrderCreateRequest implements QPayRequest<PayOrderCreateResponse> {

@@ -20,20 +20,20 @@ class RefundOrderTest {
 
     @BeforeAll
     public static void initApiKey() {
-        QPay.setApiBase(JeepayTestData.getApiBase());
-        QPay.apiKey = JeepayTestData.getApiKey();
-        QPay.mchNo = JeepayTestData.getMchNo();
-        QPay.appId = JeepayTestData.getAppId();
+        QPay.setApiBase(QPayTestData.getApiBase());
+        QPay.apiKey = QPayTestData.getApiKey();
+        QPay.mchNo = QPayTestData.getMchNo();
+        QPay.appId = QPayTestData.getAppId();
     }
 
     @Test
     public void testRefundOrderCreate() {
         // 接口文档：https://docs.jeequan.com/docs/jeepay/refund_api
-        QPayClient QPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey, QPay.getApiBase());
+        QPayClient qPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey, QPay.getApiBase());
         RefundOrderCreateRequest request = new RefundOrderCreateRequest();
         RefundOrderCreateReqModel model = new RefundOrderCreateReqModel();
         model.setMchNo(QPay.mchNo);                       // 商户号
-        model.setAppId(QPayClient.getAppId());            // 应用ID
+        model.setAppId(qPayClient.getAppId());            // 应用ID
         model.setMchOrderNo("");                            // 商户支付单号(与支付订单号二者传一)
         model.setPayOrderId("P202106181104177050002");      // 支付订单号(与商户支付单号二者传一)
         String refundOrderNo = "mho" + new Date().getTime();
@@ -47,14 +47,14 @@ class RefundOrderTest {
         model.setExtParam("");                              // 商户扩展参数,回调时原样返回
         request.setBizModel(model);
         try {
-            RefundOrderCreateResponse response = QPayClient.execute(request);
+            RefundOrderCreateResponse response = qPayClient.execute(request);
             _log.info("验签结果：{}", response.checkSign(QPay.apiKey));
             // 判断退款发起是否成功（并不代表退款成功）
-            if(response.isSuccess(QPay.apiKey)) {
+            if (response.isSuccess(QPay.apiKey)) {
                 String refundOrderId = response.get().getRefundOrderId();
                 _log.info("refundOrderId：{}", refundOrderId);
                 _log.info("mchRefundNo：{}", response.get().getMchRefundNo());
-            }else {
+            } else {
                 _log.info("下单失败：refundOrderNo={}, msg={}", refundOrderNo, response.getMsg());
                 _log.info("通道错误码：{}", response.get().getErrCode());
                 _log.info("通道错误信息：{}", response.get().getErrMsg());
@@ -68,17 +68,17 @@ class RefundOrderTest {
     @Test
     public void testRefundOrderQuery() {
         // 接口文档：https://docs.jeequan.com/docs/jeepay/refund_api
-        QPayClient QPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey, QPay.getApiBase());
+        QPayClient qPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey, QPay.getApiBase());
         RefundOrderQueryRequest request = new RefundOrderQueryRequest();
         RefundOrderQueryReqModel model = new RefundOrderQueryReqModel();
         model.setMchNo(QPay.mchNo);                                             // 商户号
-        model.setAppId(QPayClient.getAppId());                                  // 应用ID
+        model.setAppId(qPayClient.getAppId());                                  // 应用ID
         model.setRefundOrderId("P202106181105527690009");                         // 退款单号
         request.setBizModel(model);
         try {
-            RefundOrderQueryResponse response = QPayClient.execute(request);
+            RefundOrderQueryResponse response = qPayClient.execute(request);
             _log.info("验签结果：{}", response.checkSign(QPay.apiKey));
-            if(response.isSuccess(QPay.apiKey)) {
+            if (response.isSuccess(QPay.apiKey)) {
                 _log.info("订单信息：{}", response);
                 _log.info("退款状态：{}", response.get().getState());
                 _log.info("退款金额：{}", response.get().getRefundAmount());

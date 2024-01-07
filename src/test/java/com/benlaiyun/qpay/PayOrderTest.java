@@ -24,10 +24,10 @@ class PayOrderTest {
 
     @BeforeAll
     public static void initApiKey() {
-        QPay.setApiBase(JeepayTestData.getApiBase());
-        QPay.apiKey = JeepayTestData.getApiKey();
-        QPay.mchNo = JeepayTestData.getMchNo();
-        QPay.appId = JeepayTestData.getAppId();
+        QPay.setApiBase(QPayTestData.getApiBase());
+        QPay.apiKey = QPayTestData.getApiKey();
+        QPay.mchNo = QPayTestData.getMchNo();
+        QPay.appId = QPayTestData.getAppId();
     }
 
     @Test
@@ -47,12 +47,12 @@ class PayOrderTest {
         */
 
         // 支付接口文档：https://docs.jeequan.com/docs/jeepay/payment_api
-        QPayClient QPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey, QPay.getApiBase());
+        QPayClient qPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey, QPay.getApiBase());
         String wayCode = "WX_LITE";                           // 支付方式
         PayOrderCreateRequest request = new PayOrderCreateRequest();
         PayOrderCreateReqModel model = new PayOrderCreateReqModel();
         model.setMchNo(QPay.mchNo);                       // 商户号
-        model.setAppId(QPayClient.getAppId());            // 应用ID
+        model.setAppId(qPayClient.getAppId());            // 应用ID
         String orderNo = "mho" + new Date().getTime();
         model.setMchOrderNo(orderNo);                       // 商户订单号
         model.setWayCode(wayCode);                          // 支付方式
@@ -68,14 +68,14 @@ class PayOrderTest {
 
         request.setBizModel(model);
         try {
-            PayOrderCreateResponse response = QPayClient.execute(request);
+            PayOrderCreateResponse response = qPayClient.execute(request);
             _log.info("验签结果：{}", response.checkSign(QPay.apiKey));
             // 下单成功
-            if(response.isSuccess(QPay.apiKey)) {
+            if (response.isSuccess(QPay.apiKey)) {
                 String payOrderId = response.get().getPayOrderId();
                 _log.info("payOrderId：{}", payOrderId);
                 _log.info("mchOrderNo：{}", response.get().getMchOrderNo());
-            }else {
+            } else {
                 _log.info("下单失败：{}", orderNo);
                 _log.info("通道错误码：{}", response.get().getErrCode());
                 _log.info("通道错误信息：{}", response.get().getErrMsg());
@@ -87,16 +87,16 @@ class PayOrderTest {
     }
 
     String channelExtra(String wayCode) {
-        if("WX_LITE".equals(wayCode)) return wxJsapiExtra();
-        if("WX_JSAPI".equals(wayCode)) return wxJsapiExtra();
-        if("WX_BAR".equals(wayCode)) return wxBarExtra();
-        if("ALI_BAR".equals(wayCode)) return aliBarExtra();
-        if("YSF_BAR".equals(wayCode)) return ysfBarExtra();
-        if("UPACP_BAR".equals(wayCode)) return upacpBarExtra();
-        if("QR_CASHIER".equals(wayCode)) return qrCashierExtra();
-        if("AUTO_BAR".equals(wayCode)) return autoBarExtra();
-        if("PP_PC".equals(wayCode)) return ppExtra();
-        if("SAND_H5".equals(wayCode)) return sandH5Extra();
+        if ("WX_LITE".equals(wayCode)) return wxJsapiExtra();
+        if ("WX_JSAPI".equals(wayCode)) return wxJsapiExtra();
+        if ("WX_BAR".equals(wayCode)) return wxBarExtra();
+        if ("ALI_BAR".equals(wayCode)) return aliBarExtra();
+        if ("YSF_BAR".equals(wayCode)) return ysfBarExtra();
+        if ("UPACP_BAR".equals(wayCode)) return upacpBarExtra();
+        if ("QR_CASHIER".equals(wayCode)) return qrCashierExtra();
+        if ("AUTO_BAR".equals(wayCode)) return autoBarExtra();
+        if ("PP_PC".equals(wayCode)) return ppExtra();
+        if ("SAND_H5".equals(wayCode)) return sandH5Extra();
         return "";
     }
 
@@ -184,19 +184,19 @@ class PayOrderTest {
     @Test
     public void testPayOrderQuery() {
         // 支付接口文档：https://docs.jeequan.com/docs/jeepay/payment_api
-        QPayClient QPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey, QPay.getApiBase());
+        QPayClient qPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey, QPay.getApiBase());
         PayOrderQueryRequest request = new PayOrderQueryRequest();
         PayOrderQueryReqModel model = new PayOrderQueryReqModel();
         model.setMchNo(QPay.mchNo);                                           // 商户号
-        model.setAppId(QPayClient.getAppId());                                // 应用ID
+        model.setAppId(qPayClient.getAppId());                                // 应用ID
         model.setPayOrderId("P202106181104177050002");                          // 支付订单号
         request.setBizModel(model);
 
         try {
-            PayOrderQueryResponse response = QPayClient.execute(request);
+            PayOrderQueryResponse response = qPayClient.execute(request);
             _log.info("验签结果：{}", response.checkSign(QPay.apiKey));
 
-            if(response.isSuccess(QPay.apiKey)) {
+            if (response.isSuccess(QPay.apiKey)) {
                 _log.info("订单信息：{}", response);
                 _log.info("金额：{}", response.get().getAmount());
             }
@@ -221,7 +221,7 @@ class PayOrderTest {
             PayOrderCloseResponse response = QPayClient.execute(request);
             _log.info("验签结果：{}", response.checkSign(QPay.apiKey));
 
-            if(response.isSuccess(QPay.apiKey)) {
+            if (response.isSuccess(QPay.apiKey)) {
                 _log.info("返回信息：{}", response);
             }
         } catch (QPayException e) {

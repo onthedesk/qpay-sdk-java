@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * 数据结构列表属性注解
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 @Retention(RetentionPolicy.RUNTIME)

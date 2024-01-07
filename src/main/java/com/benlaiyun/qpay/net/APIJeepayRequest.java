@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * API请求
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public class APIJeepayRequest {
@@ -129,7 +129,7 @@ public class APIJeepayRequest {
 
         try {
             return new URL(sb.toString());
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new APIConnectionException("生成 QPay 请求URL异常", e);
         }
     }
@@ -265,9 +265,9 @@ public class APIJeepayRequest {
             throws IOException {
 
         String signType = options.getSignType();
-        if("MD5".equalsIgnoreCase(signType)) {
+        if ("MD5".equalsIgnoreCase(signType)) {
             return QPayKit.getSign(params, options.getApiKey());
-        }else if("RSA2".equalsIgnoreCase(signType)) {
+        } else if ("RSA2".equalsIgnoreCase(signType)) {
             throw new AssertionError("暂不支持RSA2签名");
         }
         throw new AssertionError("请设置正确的签名类型");

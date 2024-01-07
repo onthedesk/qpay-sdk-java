@@ -22,21 +22,21 @@ class TransferOrderTest {
 
     @BeforeAll
     public static void initApiKey() {
-        QPay.setApiBase(JeepayTestData.getApiBase());
-        QPay.apiKey = JeepayTestData.getApiKey();
-        QPay.mchNo = JeepayTestData.getMchNo();
-        QPay.appId = JeepayTestData.getAppId();
+        QPay.setApiBase(QPayTestData.getApiBase());
+        QPay.apiKey = QPayTestData.getApiKey();
+        QPay.mchNo = QPayTestData.getMchNo();
+        QPay.appId = QPayTestData.getAppId();
     }
 
     @Test
     public void testTransferOrderCreate() {
         // 转账接口文档：https://docs.jeequan.com/docs/jeepay/transfer_api
-        QPayClient QPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey,
+        QPayClient qPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey,
             QPay.getApiBase());
         TransferOrderCreateRequest request = new TransferOrderCreateRequest();
         TransferOrderCreateReqModel model = new TransferOrderCreateReqModel();
         model.setMchNo(QPay.mchNo);                       // 商户号
-        model.setAppId(QPayClient.getAppId());            // 应用ID
+        model.setAppId(qPayClient.getAppId());            // 应用ID
         model.setMchOrderNo("mho" + new Date().getTime());                // 商户转账单号
         model.setAmount(1L);
         model.setCurrency("CNY");
@@ -49,7 +49,7 @@ class TransferOrderTest {
         request.setBizModel(model);
 
         try {
-            TransferOrderCreateResponse response = QPayClient.execute(request);
+            TransferOrderCreateResponse response = qPayClient.execute(request);
             _log.info("验签结果：{}", response.checkSign(QPay.apiKey));
             // 判断转账发起是否成功（并不代表转账成功）
             if (response.isSuccess(QPay.apiKey)) {
@@ -70,16 +70,16 @@ class TransferOrderTest {
     @Test
     public void testTransferOrderQuery() {
         // 转账接口文档：https://docs.jeequan.com/docs/jeepay/transfer_api
-        QPayClient QPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey,
+        QPayClient qPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey,
             QPay.getApiBase());
         TransferOrderQueryRequest request = new TransferOrderQueryRequest();
         TransferOrderQueryReqModel model = new TransferOrderQueryReqModel();
         model.setMchNo(QPay.mchNo);                                          // 商户号
-        model.setAppId(QPayClient.getAppId());                               // 应用ID
+        model.setAppId(qPayClient.getAppId());                               // 应用ID
         model.setTransferId("T202108121543441860003");                         // 转账单号
         request.setBizModel(model);
         try {
-            TransferOrderQueryResponse response = QPayClient.execute(request);
+            TransferOrderQueryResponse response = qPayClient.execute(request);
             _log.info("验签结果：{}", response.checkSign(QPay.apiKey));
             if (response.isSuccess(QPay.apiKey)) {
                 _log.info("订单信息：{}", response);
@@ -95,18 +95,18 @@ class TransferOrderTest {
 
     @Test
     public void getChannelUserIdUrl() {
-        QPayClient QPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey,
+        QPayClient qPayClient = QPayClient.getInstance(QPay.appId, QPay.apiKey,
             QPay.getApiBase());
         ChannelUserRequest request = new ChannelUserRequest();
         ChannelUserReqModel model = new ChannelUserReqModel();
-        model.setAppId(QPayClient.getAppId());
+        model.setAppId(qPayClient.getAppId());
         model.setMchNo(QPay.mchNo);
         model.setRedirectUrl("https://httpdump.io/30cbe");
         model.setIfCode("AUTO");
         request.setBizModel(model);
 
         try {
-            String url = QPayClient.getRequestUrl(request);
+            String url = qPayClient.getRequestUrl(request);
             _log.info("跳转 URL: {}", url);
         } catch (QPayException e) {
             e.printStackTrace();

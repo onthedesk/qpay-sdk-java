@@ -5,7 +5,7 @@ import com.benlaiyun.qpay.QPay;
 /**
  * 请求参数选项内容
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public class RequestOptions {
@@ -225,7 +225,7 @@ public class RequestOptions {
         if (apiUri == null) {
             throw new InvalidRequestOptionsException("接口URI不能为空!");
         }
-        if(apiUri.startsWith("/")) {
+        if (apiUri.startsWith("/")) {
             throw new InvalidRequestOptionsException("接口URI("+apiUri+")不能以'/'开头");
         }
         return apiUri;

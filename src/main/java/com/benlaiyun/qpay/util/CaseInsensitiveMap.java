@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 /**
  * 不区分大小写转换Map
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public class CaseInsensitiveMap<V> extends AbstractMap<String, V>

@@ -9,7 +9,7 @@ import com.benlaiyun.qpay.response.DivisionReceiverBindResponse;
 * 分账绑定接口
 *
 * @author terrfly
-* @site https://www.jeepay.vip
+* @site https://www.benlaiyun.com
 * @date 2021/8/25 10:34
 */
 public class DivisionReceiverBindRequest implements QPayRequest<DivisionReceiverBindResponse> {

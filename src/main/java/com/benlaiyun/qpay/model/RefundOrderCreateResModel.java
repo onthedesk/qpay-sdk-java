@@ -3,7 +3,7 @@ package com.benlaiyun.qpay.model;
 /**
  * 退款下单响应实体类
  * @author jmdhappy
- * @site https://www.jeepay.vip
+ * @site https://www.benlaiyun.com
  * @date 2021-06-18 09:00
  */
 public class RefundOrderCreateResModel extends QPayObject {
