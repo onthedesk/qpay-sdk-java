@@ -7,6 +7,7 @@ import com.benlaiyun.qpay.request.RefundOrderCreateRequest;
 import com.benlaiyun.qpay.request.RefundOrderQueryRequest;
 import com.benlaiyun.qpay.response.RefundOrderCreateResponse;
 import com.benlaiyun.qpay.response.RefundOrderQueryResponse;
+import com.benlaiyun.qpay.QPayClient;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
