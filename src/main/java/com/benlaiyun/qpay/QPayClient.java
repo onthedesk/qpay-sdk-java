@@ -1,13 +1,14 @@
 package com.benlaiyun.qpay;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSON;
+
 import com.benlaiyun.qpay.exception.QPayException;
 import com.benlaiyun.qpay.net.APIQPayRequest;
 import com.benlaiyun.qpay.net.APIResource;
 import com.benlaiyun.qpay.net.RequestOptions;
 import com.benlaiyun.qpay.request.QPayRequest;
 import com.benlaiyun.qpay.response.QPayResponse;
-import com.benlaiyun.qpay.util.JSONWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -147,8 +148,9 @@ public class QPayClient extends APIResource {
                 .setApiKey(this.apiKey)
                 .build();
             request.setRequestOptions(options);
-        }
-        String jsonParam = new JSONWriter().write(request.getBizModel(), true);
+        };
+        
+        String jsonParam = JSON.toJSONString(request.getBizModel());
 
         JSONObject params = JSONObject.parseObject(jsonParam);
         request.getRequestOptions();

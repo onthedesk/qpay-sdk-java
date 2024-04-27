@@ -1,14 +1,14 @@
 package com.benlaiyun.qpay;
 
 /**
- * Jeepay数据对象
+ * QPay数据对象
  * @author jmdhappy
  * @site https://www.benlaiyun.com
  * @date 2021-06-08 11:00
  */
 public abstract class QPay {
 
-    public static final String LIVE_API_BASE = "https://pay.jeepay.vip";
+    public static final String LIVE_API_BASE = "https://qpay.benlaiyun.com";
     public static final String VERSION = "1.0";
     public static final String DEFAULT_SIGN_TYPE = "MD5";
     public static final String API_VERSION_NAME = "version";

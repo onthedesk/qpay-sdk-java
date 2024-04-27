@@ -2,12 +2,12 @@ package com.benlaiyun.qpay.net;
 
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSON;
 import com.benlaiyun.qpay.exception.APIException;
 import com.benlaiyun.qpay.exception.InvalidRequestException;
 import com.benlaiyun.qpay.exception.QPayException;
 import com.benlaiyun.qpay.request.QPayRequest;
 import com.benlaiyun.qpay.response.QPayResponse;
-import com.benlaiyun.qpay.util.JSONWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,8 +58,9 @@ public abstract class APIResource  {
             RequestMethod method,
             String url) throws QPayException {
 
-        String jsonParam = new JSONWriter().write(request.getBizModel(), true);
-
+            
+            
+        String jsonParam = JSON.toJSONString(request.getBizModel());
         JSONObject params = JSONObject.parseObject(jsonParam);
         request.getRequestOptions();
         APIQPayRequest apiQPayRequest = new APIQPayRequest(method, url, params, request.getRequestOptions());

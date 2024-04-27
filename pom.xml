@@ -11,8 +11,8 @@
 
     <parent>
         <groupId>com.benlaiyun</groupId>
-        <artifactId>qpay</artifactId>
-        <version>Final</version>
+        <artifactId>ben-video</artifactId>
+        <version>0.0.1</version>
     </parent>
 
     <name>${project.groupId}:${project.artifactId}</name>
